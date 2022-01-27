@@ -1,6 +1,5 @@
 package com.thoughtworks.people.useCasePeople
 
-import com.thoughtworks.people.businessPeople.PersistPerson
 import com.thoughtworks.people.businessPeople.Person
 import com.thoughtworks.people.businessPeople.PersonGenerator
 import java.time.LocalDate

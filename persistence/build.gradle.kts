@@ -8,6 +8,7 @@ java.sourceCompatibility = JavaVersion.VERSION_1_8
 
 dependencies {
     implementation(project(":businessPeople"))
+    implementation(project(":useCasePeople"))
 
     implementation("javax.persistence:javax.persistence-api:2.2")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa:2.2.1.BUILD-SNAPSHOT")
