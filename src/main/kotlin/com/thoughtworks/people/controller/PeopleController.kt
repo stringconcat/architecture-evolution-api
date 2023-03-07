@@ -5,28 +5,25 @@ import com.thoughtworks.people.repository.PersonRepository
 import com.thoughtworks.people.utils.GeneratedAvatar
 import com.thoughtworks.people.utils.GeneratedQuote
 import com.thoughtworks.people.utils.toNullable
-import com.thoughtworks.people.view.personDetailsForm
-import com.thoughtworks.people.view.renderDetailedView
 import org.springframework.http.HttpStatus
-import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
-import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.ResponseBody
+import org.springframework.web.bind.annotation.RestController
 import java.net.URI
 import java.time.LocalDate
 import java.util.*
 
-@Controller
+@RestController
 class PeopleController(
         val personRepository: PersonRepository
 ) {
 
     @RequestMapping(value = ["/me"], method = [RequestMethod.GET])
     @ResponseBody
-    fun me(): String {
+    fun me(): ResponseEntity<Person> {
         val me = Person(
                 id = UUID.fromString("29f4d7e3-fd7c-4664-ad07-763326215ec4"),
                 firstName = "Sergey",
@@ -37,11 +34,11 @@ class PeopleController(
                 favoriteQuote = "make the easy things easy, and the hard things possible"
         )
         personRepository.save(me)
-        return renderDetailedView(person = me)
+        return ResponseEntity.ok(me);
     }
 
     @RequestMapping(value = ["/id/{id}"])
-    fun get(@PathVariable id: String): ResponseEntity<String> {
+    fun get(@PathVariable id: String): ResponseEntity<Person> {
         val idUUD = try {
             UUID.fromString(id)
         } catch (e: IllegalArgumentException) {
@@ -52,16 +49,12 @@ class PeopleController(
                 .findById(idUUD).toNullable()
                 ?: return ResponseEntity.badRequest().build()
 
-        return ResponseEntity.ok(renderDetailedView(person))
+        return ResponseEntity.ok(person)
     }
 
-    @RequestMapping(value = ["/generate"], method = [RequestMethod.GET])
-    @ResponseBody
-    fun showCreationForm(): String {
-        return personDetailsForm()
-    }
-
-    @RequestMapping(value = ["/generate"], method = [RequestMethod.POST], consumes = [MediaType.APPLICATION_FORM_URLENCODED_VALUE] )
+    @RequestMapping(
+        value = ["/generate"],
+        method = [RequestMethod.POST])
     @ResponseBody
     fun create(personInput: PersonInput): ResponseEntity<String>{
         val inputSex = when(personInput.gender.lowercase()) {
