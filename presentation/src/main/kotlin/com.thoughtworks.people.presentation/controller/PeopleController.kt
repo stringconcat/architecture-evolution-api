@@ -1,9 +1,12 @@
 package com.thoughtworks.people.presentation.controller
 
+import com.thoughtworks.people.application.useCasePeople.CreateNewPersonUseCase
+import com.thoughtworks.people.application.useCasePeople.GetPersonUseCase
+import com.thoughtworks.people.application.useCasePeople.MeUseCase
+import com.thoughtworks.people.application.useCasePeople.PersonCreationSummary
 import com.thoughtworks.people.presentation.model.PersonRespectfullViewModel
 import com.thoughtworks.people.presentation.view.personDetailsForm
 import com.thoughtworks.people.presentation.view.renderDetailedView
-import com.thoughtworks.people.useCasePeople.*
 import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
@@ -17,9 +20,9 @@ import java.util.*
 
 @Controller
 class PeopleController(
-        val getPerson: GetPersonUseCase,
-        val createNew: CreateNewPersonUseCase,
-        val getMe: MeUseCase
+    val getPerson: GetPersonUseCase,
+    val createNew: CreateNewPersonUseCase,
+    val getMe: MeUseCase
 ) {
 
     @RequestMapping(value = ["/me"], method = [RequestMethod.GET])

@@ -1,4 +1,4 @@
-package com.thoughtworks.people.quotesGarden
+package com.thoughtworks.people.application.quotesGarden
 
 import com.thoughtworks.people.businessPeople.Quote
 import com.thoughtworks.people.businessPeople.QuotesProvider

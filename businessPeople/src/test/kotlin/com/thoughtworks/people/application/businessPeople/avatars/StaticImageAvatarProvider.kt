@@ -1,4 +1,4 @@
-package com.thoughtworks.people.businessPeople.avatars
+package com.thoughtworks.people.application.businessPeople.avatars
 
 import com.thoughtworks.people.businessPeople.AvatarProvider
 import com.thoughtworks.people.businessPeople.Person

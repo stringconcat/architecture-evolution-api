@@ -1,5 +1,6 @@
-package com.thoughtworks.people.businessPeople
+package com.thoughtworks.people.application.businessPeople
 
+import com.thoughtworks.people.businessPeople.Person
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import java.time.LocalDate

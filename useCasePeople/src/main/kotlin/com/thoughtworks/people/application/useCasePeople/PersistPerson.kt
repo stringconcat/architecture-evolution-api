@@ -1,4 +1,4 @@
-package com.thoughtworks.people.useCasePeople
+package com.thoughtworks.people.application.useCasePeople
 
 import com.thoughtworks.people.businessPeople.Person
 

@@ -1,10 +1,6 @@
 plugins {
-    kotlin("jvm")
     kotlin("plugin.spring")
-    id("io.spring.dependency-management")
 }
-
-java.sourceCompatibility = JavaVersion.VERSION_1_8
 
 dependencies {
     implementation(project(":businessPeople"))
@@ -19,10 +15,6 @@ dependencies {
 
     // view
     implementation( "org.jetbrains.kotlinx:kotlinx-html-jvm:0.6.12")
-
-    // kotlin
-    implementation("org.jetbrains.kotlin:kotlin-reflect")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
     // tests
     testImplementation("org.junit.jupiter:junit-jupiter-api")

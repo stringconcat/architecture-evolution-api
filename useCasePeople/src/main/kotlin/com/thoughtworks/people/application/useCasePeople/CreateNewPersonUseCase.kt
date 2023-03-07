@@ -1,4 +1,4 @@
-package com.thoughtworks.people.useCasePeople
+package com.thoughtworks.people.application.useCasePeople
 
 import com.thoughtworks.people.businessPeople.Person
 import com.thoughtworks.people.businessPeople.PersonGenerator
@@ -7,8 +7,8 @@ import javax.inject.Named
 
 @Named
 class CreateNewPersonUseCase(
-        private val persistPerson: PersistPerson,
-        private val personGenerator: PersonGenerator
+    private val persistPerson: PersistPerson,
+    private val personGenerator: PersonGenerator
 ) {
     operator fun invoke(
             personInput: PersonCreationSummary

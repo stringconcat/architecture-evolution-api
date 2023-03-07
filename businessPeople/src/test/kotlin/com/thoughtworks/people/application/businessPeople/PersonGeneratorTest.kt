@@ -1,7 +1,9 @@
-package com.thoughtworks.people.businessPeople
+package com.thoughtworks.people.application.businessPeople
 
-import com.thoughtworks.people.businessPeople.avatars.StaticImageAvatarProvider
-import com.thoughtworks.people.businessPeople.quotes.EmptyQuoteProviders
+import com.thoughtworks.people.businessPeople.Person
+import com.thoughtworks.people.businessPeople.PersonGenerator
+import com.thoughtworks.people.application.businessPeople.avatars.StaticImageAvatarProvider
+import com.thoughtworks.people.application.businessPeople.quotes.EmptyQuoteProviders
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import java.time.LocalDate

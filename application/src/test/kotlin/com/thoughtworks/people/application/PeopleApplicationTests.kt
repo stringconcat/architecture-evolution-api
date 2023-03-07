@@ -1,4 +1,4 @@
-package com.thoughtworks.people
+package com.thoughtworks.people.application
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
