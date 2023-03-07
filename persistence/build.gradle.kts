@@ -10,14 +10,14 @@ dependencies {
     implementation(project(":businessPeople"))
     implementation(project(":useCasePeople"))
 
-    implementation("javax.persistence:javax.persistence-api:2.2")
-    implementation("org.springframework.boot:spring-boot-starter-data-jpa:2.2.1.BUILD-SNAPSHOT")
+    implementation("javax.persistence:javax.persistence-api")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 
     // kotlin
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
     // tests
-    testCompile("org.junit.jupiter:junit-jupiter-api:5.5.2")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.5.2")
+    testImplementation("org.junit.jupiter:junit-jupiter-api")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
 }

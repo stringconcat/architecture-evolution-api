@@ -12,6 +12,11 @@ allprojects {
 	group = "com.thoughtworks"
 	version = "0.0.1-SNAPSHOT"
 
+	apply {
+		plugin("io.spring.dependency-management")
+	}
+
+
 	repositories {
 		mavenCentral()
 		jcenter()
@@ -26,6 +31,22 @@ allprojects {
 		}
 	}
 
+	dependencyManagement {
+		imports {
+			mavenBom("org.springframework.boot:spring-boot-dependencies:2.7.8")
+		}
+		dependencies {
+			// kotlin
+			dependency("org.jetbrains.kotlin:kotlin-reflect:1.8.10")
+			dependency("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.10")
+
+			// tests
+			dependency("org.junit.jupiter:junit-jupiter-api:5.9.2")
+			dependency("io.mockk:mockk:1.9.3")
+		}
+
+	}
+
 }
 
 java.sourceCompatibility = JavaVersion.VERSION_1_8
@@ -34,7 +55,6 @@ java.sourceCompatibility = JavaVersion.VERSION_1_8
 dependencies {
 	// spring modules
 	implementation("org.springframework.boot:spring-boot-starter-webflux")
-	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.boot:spring-boot-starter-data-rest")
 
 	// kotlin
@@ -57,10 +77,7 @@ dependencies {
 	// tests
 	testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.2")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
-	testImplementation("io.projectreactor:reactor-test")
 	testImplementation("io.mockk:mockk:1.9.3")
-
-
 }
 
 tasks.test {
