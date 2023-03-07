@@ -24,7 +24,7 @@ internal class PeopleControllerTest {
         mvc.get("/me") {
             contentType = MediaType.TEXT_HTML
         }.andExpect {
-            status { is2xxSuccessful }
+            status { is2xxSuccessful() }
         }.andReturn()
                 .response
                 .contentAsString
