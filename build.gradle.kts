@@ -10,21 +10,16 @@ plugins {
 
 group = "com.thoughtworks"
 version = "0.0.1-SNAPSHOT"
-java.sourceCompatibility = JavaVersion.VERSION_1_8
 
 
 repositories {
 	mavenCentral()
-	jcenter()
-	maven { url = uri("https://repo.spring.io/milestone") }
-	maven { url = uri("https://repo.spring.io/snapshot") }
 }
 
 dependencies {
 	// spring modules
-	implementation("org.springframework.boot:spring-boot-starter-webflux")
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-	implementation("org.springframework.boot:spring-boot-starter-data-rest")
+	implementation("org.springframework.boot:spring-boot-starter-web")
 
 	// kotlin
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
@@ -33,11 +28,9 @@ dependencies {
 	// tools
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 
-	// dev tools
-	developmentOnly("org.springframework.boot:spring-boot-devtools")
-
 	// view
-	implementation( "org.jetbrains.kotlinx:kotlinx-html-jvm:0.6.12")
+	implementation("org.springdoc:springdoc-openapi-ui:1.6.13")
+	implementation("org.springdoc:springdoc-openapi-data-rest:1.6.13")
 
 	//persistance
 	runtimeOnly("com.h2database:h2")
@@ -57,6 +50,5 @@ tasks.withType<Test> {
 tasks.withType<KotlinCompile> {
 	kotlinOptions {
 		freeCompilerArgs = listOf("-Xjsr305=strict")
-		jvmTarget = "1.8"
 	}
 }
