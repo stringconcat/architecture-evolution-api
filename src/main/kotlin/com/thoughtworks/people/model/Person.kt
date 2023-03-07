@@ -1,5 +1,6 @@
 package com.thoughtworks.people.model
 
+import com.fasterxml.jackson.annotation.JsonProperty
 import java.time.LocalDate
 import java.util.*
 import javax.persistence.Entity
@@ -11,7 +12,7 @@ data class Person(
         val firstName: String,
         val secondName: String,
         val birthDate: LocalDate,
-        val sex: Sex,
+        @JsonProperty("gender") val sex: Sex,
         val avatartUrl: String,
         val favoriteQuote: String
 ) {
