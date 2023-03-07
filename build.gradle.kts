@@ -1,11 +1,11 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-	id("org.springframework.boot") version "2.2.1.BUILD-SNAPSHOT"
-	id("io.spring.dependency-management") version "1.0.8.RELEASE"
-	kotlin("jvm") version "1.3.50"
-	kotlin("plugin.spring") version "1.3.50"
-	id("org.jetbrains.kotlin.plugin.jpa") version "1.3.50" apply false
+	id("org.springframework.boot") version "2.7.8"
+	id("io.spring.dependency-management") version "1.1.0"
+	kotlin("jvm") version "1.8.10"
+	kotlin("plugin.spring") version "1.8.10"
+	id("org.jetbrains.kotlin.plugin.jpa") version "1.8.10" apply false
 }
 
 allprojects {
@@ -29,14 +29,6 @@ allprojects {
 }
 
 java.sourceCompatibility = JavaVersion.VERSION_1_8
-
-val developmentOnly by configurations.creating
-configurations {
-	runtimeClasspath {
-		extendsFrom(developmentOnly)
-	}
-}
-
 
 
 dependencies {
@@ -63,11 +55,12 @@ dependencies {
 	runtimeOnly("com.h2database:h2")
 
 	// tests
-	testCompile("org.junit.jupiter:junit-jupiter-api:5.5.2")
-	testImplementation("org.springframework.boot:spring-boot-starter-test") {
-		exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
-	}
+	testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.2")
+	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("io.projectreactor:reactor-test")
+	testImplementation("io.mockk:mockk:1.9.3")
+
+
 }
 
 tasks.test {
