@@ -6,16 +6,16 @@ const val defaultQuote = "whoops, something went wrong"
 
 class GeneratedQuote {
 
-    private val getRandomUrl = "https://quote-garden.herokuapp.com/quotes/random"
+    private val getRandomUrl = "https://api.quotable.io/random"
 
 
     fun get() = RestTemplate()
             .getForEntity(getRandomUrl, QuoteResponse::class.java)
-            .body?.quoteText ?: defaultQuote
+            .body?.content ?: defaultQuote
 
     internal data class QuoteResponse(
-            val _id: String,
-            val quoteText: String,
-            val quoteAuthor: String
+        val _id: String,
+        val content: String,
+        val author: String
     )
 }
