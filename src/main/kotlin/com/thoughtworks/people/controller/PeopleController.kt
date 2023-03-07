@@ -64,7 +64,7 @@ class PeopleController(
     @RequestMapping(value = ["/generate"], method = [RequestMethod.POST], consumes = [MediaType.APPLICATION_FORM_URLENCODED_VALUE] )
     @ResponseBody
     fun create(personInput: PersonInput): ResponseEntity<String>{
-        val inputSex = when(personInput.gender.toLowerCase()) {
+        val inputSex = when(personInput.gender.lowercase()) {
             "male" -> Person.Sex.MAN
             "female" -> Person.Sex.WOMAN
             else -> Person.Sex.MAN
