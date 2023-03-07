@@ -51,5 +51,8 @@ class InMemoryRepository: PersonRepository  {
     override fun delete(entity: PersonEntity) {
         storage.remove(entity.id)
     }
+    override fun deleteAllById(ids: MutableIterable<UUID>) {
+        ids.forEach { deleteById(it) }
+    }
 
 }
