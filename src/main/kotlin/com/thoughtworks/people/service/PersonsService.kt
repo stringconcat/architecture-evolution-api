@@ -32,7 +32,7 @@ class PersonsService(
             .findById(id).toNullable()
 
     fun createNewPerson(personInput: PersonInput): Person {
-        val inputSex = when(personInput.gender.toLowerCase()) {
+        val inputSex = when(personInput.gender.lowercase()) {
             "male" -> Person.Sex.MAN
             "female" -> Person.Sex.WOMAN
             else -> Person.Sex.MAN
