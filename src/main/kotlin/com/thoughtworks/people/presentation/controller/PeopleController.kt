@@ -14,13 +14,14 @@ class PeopleController(
         val personService: PersonsService
 ) {
 
-    @RequestMapping(value = ["/me"], method = [RequestMethod.GET])
+    @GetMapping(value = ["/me"])
+    @ResponseBody
     fun me(): ResponseEntity<Person> {
         val me = personService.me()
         return ResponseEntity.ok(me)
     }
 
-    @RequestMapping(value = ["/id/{id}"])
+    @GetMapping(value = ["/id/{id}"])
     fun get(@PathVariable id: String): ResponseEntity<Person> {
         val idUUD = try {
             UUID.fromString(id)
@@ -34,8 +35,7 @@ class PeopleController(
         return ResponseEntity.ok(person)
     }
 
-    @RequestMapping(value = ["/generate"], method = [RequestMethod.POST] )
-    @ResponseBody
+    @PostMapping(value = ["/generate"])
     fun create(personInput: PersonInput): ResponseEntity<String>{
         val generatedPerson = personService.createNewPerson(personInput)
 
