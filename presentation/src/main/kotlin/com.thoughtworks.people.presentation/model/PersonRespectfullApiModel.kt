@@ -1,11 +1,13 @@
 package com.thoughtworks.people.presentation.model
 
+import com.fasterxml.jackson.annotation.JsonProperty
 import com.thoughtworks.people.businessPeople.Person
 
-class PersonRespectfullViewModel(
+class PersonRespectfullApiModel(
         private val person: Person
 ) {
 
+    @JsonProperty("title")
     fun title() =
             "${prefixIfNeeded()} ${person.firstName} ${person.secondName}"
 
@@ -18,9 +20,12 @@ class PersonRespectfullViewModel(
             else ""
 
 
+    @JsonProperty("avatarUrl")
     fun avatarUrl() = person.avatartUrl
 
-    fun birthDate() = "${person.birthDate.dayOfMonth} ${person.birthDate.month} ${person.birthDate.year}"
+    @JsonProperty("birthDay")
+    fun birthDate() = "${person.birthDate.month} ${person.birthDate.year}"
 
+    @JsonProperty("favoriteQuote")
     fun favoriteQuote() = person.favoriteQuote
 }

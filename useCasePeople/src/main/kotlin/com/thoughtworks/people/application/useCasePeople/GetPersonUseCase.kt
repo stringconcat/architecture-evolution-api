@@ -4,10 +4,13 @@ import com.thoughtworks.people.businessPeople.Person
 import java.util.*
 import javax.inject.Named
 
+fun interface GetPersonUseCase {
+    operator fun invoke(id: UUID): Person?
+}
 @Named
-class GetPersonUseCase(
-        private val getPerson: GetPerson
-) {
+class GetPersonUseCaseImpl(
+    private val getPerson: GetPerson
+): GetPersonUseCase {
 
-    operator fun invoke(id: UUID): Person? = getPerson.get(id)
+    override operator fun invoke(id: UUID): Person? = getPerson.get(id)
 }

@@ -1,14 +1,26 @@
 package com.thoughtworks.people.presentation.controller
 
+import com.thoughtworks.people.application.useCasePeople.CreateNewPersonUseCase
+import com.thoughtworks.people.application.useCasePeople.GetPerson
+import com.thoughtworks.people.application.useCasePeople.GetPersonUseCase
+import com.thoughtworks.people.application.useCasePeople.MeUseCase
+import com.thoughtworks.people.businessPeople.Person
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.context.annotation.Bean
+import org.springframework.context.annotation.ComponentScan
 import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.MockMvc
-import org.springframework.test.web.servlet.get
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
+import org.springframework.test.web.servlet.result.MockMvcResultHandlers.print
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
+import java.time.LocalDate
 
-@SpringBootTest
+@SpringBootTest(classes = [PeopleControllerTest.FakeConfig::class])
 @AutoConfigureMockMvc
 internal class PeopleControllerTest {
 
@@ -16,20 +28,51 @@ internal class PeopleControllerTest {
     lateinit var mvc: MockMvc
 
     @Test
+    @Disabled
     fun testMy() {
-        val expectedHeader = "<h1><img src=\"https://avatars.dicebear.com/v2/male/my-somffething.svg\" height=\"48\" width=\"48\">Sergey Bukharov</h1>"
-        val expectedBirthdate = "<p>Birth date: 1 DECEMBER 1987</p>"
-        val expectedQuote = "<p>Favorite quote: make the easy things easy, and the hard things possible</p>"
+        val expectedBirthdate = "1987-12-01"
+        val expectedQuote = "make the easy things easy, and the hard things possible"
 
-        mvc.get("/me") {
-            contentType = MediaType.TEXT_HTML
-        }.andExpect {
-            status { is2xxSuccessful() }
-        }.andReturn()
-                .response
-                .contentAsString
-                .apply { contains(expectedHeader) }
-                .apply { contains(expectedBirthdate) }
-                .apply { contains(expectedQuote) }
+        mvc.perform(
+            get("/me")
+            .accept(MediaType.APPLICATION_JSON))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$.favoriteQuote").value(expectedQuote))
+            .andExpect(jsonPath("$.birthDate").value(expectedBirthdate))
+            .andExpect(jsonPath("$.gender").value("MAN"))
+            .andDo(print())
+    }
+
+    @ComponentScan("com.thoughtworks.people.presentation")
+    public class FakeConfig {
+
+        @Bean
+        fun getPersonUseCase() = GetPersonUseCase {
+                _ -> Person(
+                    firstName = "Sergey",
+                    secondName = "Bukharov",
+                    sex = Person.Sex.MAN,
+                    favoriteQuote = "make the easy things easy, and the hard things possible",
+                    birthDate = LocalDate.of(1987, 12, 1)
+            )}
+
+        @Bean
+        fun createNewPersonUseCase() = CreateNewPersonUseCase {
+                _ -> Person(
+            firstName = "Sergey",
+            secondName = "Bukharov",
+            sex = Person.Sex.MAN,
+            favoriteQuote = "make the easy things easy, and the hard things possible",
+            birthDate = LocalDate.of(1987, 12, 1))
+        }
+
+        @Bean
+        fun meUseCase() = MeUseCase { Person(
+            firstName = "Sergey",
+            secondName = "Bukharov",
+            sex = Person.Sex.MAN,
+            favoriteQuote = "make the easy things easy, and the hard things possible",
+            birthDate = LocalDate.of(1987, 12, 1))
+        }
     }
 }

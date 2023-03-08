@@ -5,13 +5,19 @@ import com.thoughtworks.people.businessPeople.PersonGenerator
 import java.time.LocalDate
 import javax.inject.Named
 
+fun interface CreateNewPersonUseCase {
+    operator fun invoke(
+        personInput: PersonCreationSummary
+    ): Person
+}
+
 @Named
-class CreateNewPersonUseCase(
+class CreateNewPersonUseCaseImpl(
     private val persistPerson: PersistPerson,
     private val personGenerator: PersonGenerator
-) {
-    operator fun invoke(
-            personInput: PersonCreationSummary
+): CreateNewPersonUseCase {
+    override operator fun invoke(
+        personInput: PersonCreationSummary
     ): Person {
         val inputSex = when(personInput.gender.lowercase()) {
             "male" -> Person.Sex.MAN
@@ -20,10 +26,10 @@ class CreateNewPersonUseCase(
         }
 
         val generatedPerson = personGenerator.generate(
-                firstName = personInput.firstName,
-                secondName = personInput.secondName,
-                birthDate = LocalDate.parse(personInput.birthDate),
-                sex = inputSex
+            firstName = personInput.firstName,
+            secondName = personInput.secondName,
+            birthDate = LocalDate.parse(personInput.birthDate),
+            sex = inputSex
         )
 
         persistPerson.persist(generatedPerson)
@@ -36,8 +42,8 @@ class CreateNewPersonUseCase(
 }
 
 data class PersonCreationSummary(
-        val firstName: String,
-        val secondName: String,
-        val birthDate: String,
-        val gender: String
+    val firstName: String,
+    val secondName: String,
+    val birthDate: String,
+    val gender: String
 )

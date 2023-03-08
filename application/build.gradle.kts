@@ -12,9 +12,6 @@ dependencies {
     implementation(project(":quoteGarden"))
     implementation(project(":avatarsDicebear"))
 
-    implementation("javax.persistence:javax.persistence-api")
-    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-
     // tests
     testImplementation("org.junit.jupiter:junit-jupiter-api")
     testImplementation("org.springframework.boot:spring-boot-starter-test")

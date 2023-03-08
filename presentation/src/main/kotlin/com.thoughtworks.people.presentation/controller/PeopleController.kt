@@ -4,35 +4,30 @@ import com.thoughtworks.people.application.useCasePeople.CreateNewPersonUseCase
 import com.thoughtworks.people.application.useCasePeople.GetPersonUseCase
 import com.thoughtworks.people.application.useCasePeople.MeUseCase
 import com.thoughtworks.people.application.useCasePeople.PersonCreationSummary
-import com.thoughtworks.people.presentation.model.PersonRespectfullViewModel
-import com.thoughtworks.people.presentation.view.personDetailsForm
-import com.thoughtworks.people.presentation.view.renderDetailedView
+import com.thoughtworks.people.presentation.model.PersonRespectfullApiModel
 import org.springframework.http.HttpStatus
-import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
-import org.springframework.stereotype.Controller
+import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RequestMethod
-import org.springframework.web.bind.annotation.ResponseBody
+import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RestController
 import java.net.URI
 import java.util.*
 
-@Controller
+@RestController
 class PeopleController(
     val getPerson: GetPersonUseCase,
     val createNew: CreateNewPersonUseCase,
     val getMe: MeUseCase
 ) {
 
-    @RequestMapping(value = ["/me"], method = [RequestMethod.GET])
-    @ResponseBody
-    fun me(): String {
-        return renderDetailedView(person = PersonRespectfullViewModel(getMe()))
+    @GetMapping(value = ["/me"])
+    fun me(): PersonRespectfullApiModel {
+        return PersonRespectfullApiModel(getMe())
     }
 
-    @RequestMapping(value = ["/id/{id}"])
-    fun get(@PathVariable id: String): ResponseEntity<String> {
+    @GetMapping(value = ["/id/{id}"])
+    fun get(@PathVariable id: String): ResponseEntity<PersonRespectfullApiModel> {
         val idUUD = try {
             UUID.fromString(id)
         } catch (e: IllegalArgumentException) {
@@ -42,22 +37,10 @@ class PeopleController(
         val person = getPerson(idUUD)
                 ?: return ResponseEntity.badRequest().build()
 
-        return ResponseEntity.ok(
-                renderDetailedView(PersonRespectfullViewModel(person))
-        )
+        return ResponseEntity.ok(PersonRespectfullApiModel(person))
     }
 
-    @RequestMapping(value = ["/generate"], method = [RequestMethod.GET])
-    @ResponseBody
-    fun showCreationForm(): String {
-        return personDetailsForm()
-    }
-
-    @RequestMapping(
-            value = ["/generate"],
-            method = [RequestMethod.POST],
-            consumes = [MediaType.APPLICATION_FORM_URLENCODED_VALUE])
-    @ResponseBody
+    @PostMapping(value = ["/generate"])
     fun create(personInput: PersonCreationSummary): ResponseEntity<String>{
         val generatedPerson = createNew(personInput)
 

@@ -5,8 +5,11 @@ import java.time.LocalDate
 import java.util.*
 import javax.inject.Named
 
+fun interface MeUseCase {
+    operator fun invoke(): Person
+}
 @Named
-class MeUseCase(
+class MeUseCaseImpl(
         private val persistPerson: PersistPerson
 ) {
     operator fun invoke(): Person {
