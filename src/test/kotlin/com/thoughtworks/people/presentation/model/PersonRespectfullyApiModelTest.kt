@@ -5,11 +5,11 @@ import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import java.time.LocalDate
 
-internal class PersonRespectfullyViewModelTest {
+internal class PersonRespectfullyApiModelTest {
 
     @Test
     fun `when user is young than name prefix should be avoid`() {
-        val hueyDuck = PersonRespectfullViewModel(
+        val hueyDuck = PersonRespectfullApiModel(
                 Person(
                     firstName = "Huey",
                     secondName = "Duck",
@@ -26,7 +26,7 @@ internal class PersonRespectfullyViewModelTest {
 
     @Test
     fun `when user is amateur man than name prefix Mr should be present`() {
-        val donaldDuck = PersonRespectfullViewModel(
+        val donaldDuck = PersonRespectfullApiModel(
                 Person(
                         firstName = "Donald",
                         secondName = "Duck",
@@ -42,7 +42,7 @@ internal class PersonRespectfullyViewModelTest {
 
     @Test
     fun `when user is amateur woman than name prefix Mrs should be present`() {
-        val duck = PersonRespectfullViewModel(
+        val duck = PersonRespectfullApiModel(
                 Person(
                         firstName = "Donna",
                         secondName = "Duck",
@@ -58,7 +58,7 @@ internal class PersonRespectfullyViewModelTest {
 
     @Test
     fun `person birthdate should be displayed in format d MONTH yyyy`() {
-        val duck = PersonRespectfullViewModel(
+        val duck = PersonRespectfullApiModel(
                 Person(
                         firstName = "Donna",
                         secondName = "Duck",
@@ -69,6 +69,6 @@ internal class PersonRespectfullyViewModelTest {
                 )
         )
 
-        assertEquals("1 JANUARY 1956", duck.birthDate())
+        assertEquals("JANUARY 1956", duck.birthDate())
     }
 }
