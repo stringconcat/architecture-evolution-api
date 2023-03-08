@@ -1,7 +1,7 @@
 package com.thoughtworks.people.presentation.model
 
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.thoughtworks.people.model.Person
+import com.thoughtworks.people.business.Person
 
 class PersonRespectfullApiModel(
         val person: Person
@@ -11,7 +11,7 @@ class PersonRespectfullApiModel(
             "${prefixIfNeeded()}${person.firstName} ${person.secondName}"
 
     private fun prefixIfNeeded() =
-            if (person.ageYears() > 40)
+            if (person.mature())
                 when (person.sex) {
                     Person.Sex.MAN -> "Mr"
                     Person.Sex.WOMAN -> "Mrs"
