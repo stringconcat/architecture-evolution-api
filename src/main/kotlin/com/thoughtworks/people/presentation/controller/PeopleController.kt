@@ -1,6 +1,6 @@
 package com.thoughtworks.people.presentation.controller
 
-import com.thoughtworks.people.model.Person
+import com.thoughtworks.people.presentation.model.PersonRespectfullApiModel
 import com.thoughtworks.people.service.PersonInput
 import com.thoughtworks.people.service.PersonsService
 import org.springframework.http.HttpStatus
@@ -16,13 +16,13 @@ class PeopleController(
 
     @GetMapping(value = ["/me"])
     @ResponseBody
-    fun me(): ResponseEntity<Person> {
+    fun me(): ResponseEntity<PersonRespectfullApiModel> {
         val me = personService.me()
-        return ResponseEntity.ok(me)
+        return ResponseEntity.ok(PersonRespectfullApiModel(me))
     }
 
     @GetMapping(value = ["/id/{id}"])
-    fun get(@PathVariable id: String): ResponseEntity<Person> {
+    fun get(@PathVariable id: String): ResponseEntity<PersonRespectfullApiModel> {
         val idUUD = try {
             UUID.fromString(id)
         } catch (e: IllegalArgumentException) {
@@ -32,11 +32,11 @@ class PeopleController(
         val person = personService.get(idUUD)
                 ?: return ResponseEntity.badRequest().build()
 
-        return ResponseEntity.ok(person)
+        return ResponseEntity.ok(PersonRespectfullApiModel(person))
     }
 
     @PostMapping(value = ["/generate"])
-    fun create(personInput: PersonInput): ResponseEntity<String>{
+    fun create(personInput: PersonInput): ResponseEntity<PersonRespectfullApiModel>{
         val generatedPerson = personService.createNewPerson(personInput)
 
         return ResponseEntity
