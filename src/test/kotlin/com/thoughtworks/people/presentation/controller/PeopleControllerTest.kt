@@ -21,15 +21,16 @@ internal class PeopleControllerTest {
 
     @Test
     fun testMy() {
-        val expectedBirthdate = "1987-12-01"
+        val expectedBirthdate = "DECEMBER 1987"
         val expectedQuote = "make the easy things easy, and the hard things possible"
 
         mvc.perform(get("/me")
             .accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk())
             .andExpect(jsonPath("$.favoriteQuote").value(expectedQuote))
-            .andExpect(jsonPath("$.birthDate").value(expectedBirthdate))
+            .andExpect(jsonPath("$.birthday").value(expectedBirthdate))
             .andExpect(jsonPath("$.gender").value("MAN"))
+            .andExpect(jsonPath("$.title").value("Sergey Bukharov"))
             .andDo(MockMvcResultHandlers.print())
 
     }
