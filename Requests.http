@@ -6,8 +6,11 @@ POST localhost:8080/generate
 Content-Type: application/json
 
 {
-  "first_name":"John",
+  "firstName":"John",
   "secondName":"Doe",
   "birthDate":"1990-01-15",
   "gender":"male"
 }
+
+### Get a person by ID
+GET localhost:8080/id/10235770-a832-4797-a26d-21163dab0ec8
