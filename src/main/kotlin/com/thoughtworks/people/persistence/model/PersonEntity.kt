@@ -1,20 +1,20 @@
 package com.thoughtworks.people.persistence.model
 
 import com.thoughtworks.people.business.Person
+import jakarta.persistence.Entity
+import jakarta.persistence.Id
 import java.time.LocalDate
 import java.util.*
-import javax.persistence.Entity
-import javax.persistence.Id
 
 @Entity
 data class PersonEntity(
-        @Id val id: UUID = UUID.randomUUID(),
-        val firstName: String,
-        val secondName: String,
-        val birthDate: LocalDate,
-        val sex: Sex,
-        val avatartUrl: String,
-        val favoriteQuote: String
+    @Id val id: UUID = UUID.randomUUID(),
+    val firstName: String,
+    val secondName: String,
+    val birthDate: LocalDate,
+    val sex: Sex,
+    val avatartUrl: String,
+    val favoriteQuote: String
 ) {
     enum class Sex {
         MAN, WOMAN
