@@ -1,7 +1,6 @@
 package com.thoughtworks.people.utils
 
 import com.thoughtworks.people.model.Person
-import net.bytebuddy.implementation.bytecode.assign.TypeCasting
 import java.util.*
 
 class GeneratedAvatar(
