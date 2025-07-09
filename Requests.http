@@ -1,0 +1,13 @@
+### me
+GET localhost:8080/me
+
+### Generate
+POST localhost:8080/generate
+Content-Type: application/json
+
+{
+  "first_name":"John",
+  "secondName":"Doe",
+  "birthDate":"1990-01-15",
+  "gender":"male"
+}
