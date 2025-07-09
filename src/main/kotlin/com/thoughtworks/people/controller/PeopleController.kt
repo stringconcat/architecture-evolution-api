@@ -49,7 +49,7 @@ class PeopleController(
     }
 
     @PostMapping(value = ["/generate"])
-    fun create(personInput: PersonInput): ResponseEntity<String>{
+    fun create(@RequestBody personInput: PersonInput): ResponseEntity<String>{
         val inputSex = when(personInput.gender.lowercase()) {
             "male" -> Person.Sex.MAN
             "female" -> Person.Sex.WOMAN

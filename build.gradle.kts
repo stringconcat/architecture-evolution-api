@@ -1,54 +1,48 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-	id("org.springframework.boot") version "2.7.8"
-	id("io.spring.dependency-management") version "1.1.0"
-	kotlin("jvm") version "1.8.10"
-	kotlin("plugin.spring") version "1.8.10"
-	id("org.jetbrains.kotlin.plugin.jpa") version "1.8.10"
+	kotlin("jvm") version "1.9.25"
+	kotlin("plugin.spring") version "1.9.25"
+	id("org.springframework.boot") version "3.5.3"
+	id("io.spring.dependency-management") version "1.1.7"
+	kotlin("plugin.jpa") version "1.9.25"
 }
 
 group = "com.thoughtworks"
 version = "0.0.1-SNAPSHOT"
 
 
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+}
+
 repositories {
 	mavenCentral()
 }
 
 dependencies {
-	// spring modules
-	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-	implementation("org.springframework.boot:spring-boot-starter-web")
-
-	// kotlin
+	implementation("org.springframework.boot:spring-boot-starter")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
-	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+	implementation("org.springframework.boot:spring-boot-starter-web")
+	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+	implementation("org.springframework.boot:spring-boot-starter-validation")
 
-	// tools
-	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 
-	// view
-	implementation("org.springdoc:springdoc-openapi-ui:1.6.13")
-	implementation("org.springdoc:springdoc-openapi-data-rest:1.6.13")
-
-	//persistance
-	runtimeOnly("com.h2database:h2")
-	implementation("javax.persistence:javax.persistence-api:2.2")
-
-	// tests
-	testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.2")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
-	testImplementation("io.projectreactor:reactor-test")
+	testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
+	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+	runtimeOnly("com.h2database:h2:2.2.224")
 
+}
+
+kotlin {
+	compilerOptions {
+		freeCompilerArgs.addAll("-Xjsr305=strict")
+	}
 }
 
 tasks.withType<Test> {
 	useJUnitPlatform()
-}
-
-tasks.withType<KotlinCompile> {
-	kotlinOptions {
-		freeCompilerArgs = listOf("-Xjsr305=strict")
-	}
 }
