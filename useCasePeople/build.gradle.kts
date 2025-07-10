@@ -5,7 +5,7 @@ plugins {
 dependencies {
     implementation(project(":businessPeople"))
 
-    implementation("javax.inject:javax.inject:1")
+    implementation(libs.injectApi)
 
     // kotlin
     implementation("org.jetbrains.kotlin:kotlin-reflect")

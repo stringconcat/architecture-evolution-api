@@ -3,7 +3,7 @@ plugins {
 }
 
 dependencies {
-    implementation("javax.inject:javax.inject:1")
+    implementation(libs.injectApi)
 
     // tests
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.13.3")

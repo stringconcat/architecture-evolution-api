@@ -2,9 +2,9 @@ package com.thoughtworks.people.useCasePeople
 
 import com.thoughtworks.people.useCasePeople.ports.PersistPerson
 import com.thoughtworks.people.businessPeople.Person
+import jakarta.inject.Named
 import java.time.LocalDate
 import java.util.*
-import javax.inject.Named
 
 fun interface MeUseCase {
     operator fun invoke(): Person

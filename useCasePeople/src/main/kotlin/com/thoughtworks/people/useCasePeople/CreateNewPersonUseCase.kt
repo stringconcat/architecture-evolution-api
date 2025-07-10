@@ -3,8 +3,8 @@ package com.thoughtworks.people.useCasePeople
 import com.thoughtworks.people.useCasePeople.ports.PersistPerson
 import com.thoughtworks.people.businessPeople.Person
 import com.thoughtworks.people.businessPeople.PersonGenerator
+import jakarta.inject.Named
 import java.time.LocalDate
-import javax.inject.Named
 
 fun interface CreateNewPersonUseCase {
     operator fun invoke(

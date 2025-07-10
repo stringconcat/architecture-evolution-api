@@ -2,7 +2,7 @@ package com.thoughtworks.people.avatarsDiceBear
 
 import com.thoughtworks.people.businessPeople.AvatarProvider
 import com.thoughtworks.people.businessPeople.Person
-import javax.inject.Named
+import jakarta.inject.Named
 
 @Named
 class DiceBearAvatarProvider: AvatarProvider {

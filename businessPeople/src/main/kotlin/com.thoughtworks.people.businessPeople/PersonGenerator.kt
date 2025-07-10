@@ -1,7 +1,7 @@
 package com.thoughtworks.people.businessPeople
 
+import jakarta.inject.Named
 import java.time.LocalDate
-import javax.inject.Named
 
 @Named
 class PersonGenerator(

@@ -2,8 +2,8 @@ package com.thoughtworks.people.useCasePeople
 
 import com.thoughtworks.people.useCasePeople.ports.GetPerson
 import com.thoughtworks.people.businessPeople.Person
+import jakarta.inject.Named
 import java.util.*
-import javax.inject.Named
 
 fun interface GetPersonUseCase {
     operator fun invoke(id: UUID): Person?

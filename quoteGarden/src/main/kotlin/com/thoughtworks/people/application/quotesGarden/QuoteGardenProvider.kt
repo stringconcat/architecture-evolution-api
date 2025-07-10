@@ -2,8 +2,8 @@ package com.thoughtworks.people.application.quotesGarden
 
 import com.thoughtworks.people.businessPeople.Quote
 import com.thoughtworks.people.businessPeople.QuotesProvider
+import jakarta.inject.Named
 import org.springframework.web.client.RestTemplate
-import javax.inject.Named
 
 const val defaultQuote = "whoops, something went wrong"
 
