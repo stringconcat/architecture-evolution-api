@@ -36,8 +36,7 @@ repositories {
 dependencies {
 	implementation(project(":application"))
 
-	testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
-	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+	testImplementation(libs.bundles.unitTesting)
 
 }
 
