@@ -17,9 +17,6 @@ dependencies {
     implementation(libs.springBootStarterWeb)
     implementation(libs.springBootStarterDataJpa)
     implementation("com.h2database:h2:2.3.232")
-
-    // tests
-    testImplementation("org.junit.jupiter:junit-jupiter-api")
+    testImplementation(libs.bundles.unitTesting)
     testImplementation(libs.springBootStarterTest)
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
 }

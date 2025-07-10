@@ -10,8 +10,5 @@ dependencies {
 
     implementation(libs.springBootStarterDataJpa)
     implementation(libs.springBootStarterValidation)
-
-    // tests
-    testImplementation("org.junit.jupiter:junit-jupiter-api")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
+    testImplementation(libs.bundles.unitTesting)
 }
