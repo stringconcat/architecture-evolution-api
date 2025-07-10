@@ -1,4 +1,4 @@
-package com.thoughtworks.people.application.useCasePeople
+package com.thoughtworks.people.useCasePeople.ports
 
 import com.thoughtworks.people.businessPeople.Person
 import java.util.*

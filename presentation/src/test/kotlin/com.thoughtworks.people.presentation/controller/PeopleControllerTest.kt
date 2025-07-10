@@ -1,9 +1,8 @@
 package com.thoughtworks.people.presentation.controller
 
-import com.thoughtworks.people.application.useCasePeople.CreateNewPersonUseCase
-import com.thoughtworks.people.application.useCasePeople.GetPerson
-import com.thoughtworks.people.application.useCasePeople.GetPersonUseCase
-import com.thoughtworks.people.application.useCasePeople.MeUseCase
+import com.thoughtworks.people.useCasePeople.CreateNewPersonUseCase
+import com.thoughtworks.people.useCasePeople.GetPersonUseCase
+import com.thoughtworks.people.useCasePeople.MeUseCase
 import com.thoughtworks.people.businessPeople.Person
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test

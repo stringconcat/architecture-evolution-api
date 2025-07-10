@@ -1,5 +1,6 @@
-package com.thoughtworks.people.application.useCasePeople
+package com.thoughtworks.people.useCasePeople
 
+import com.thoughtworks.people.useCasePeople.ports.GetPerson
 import com.thoughtworks.people.businessPeople.Person
 import java.util.*
 import javax.inject.Named

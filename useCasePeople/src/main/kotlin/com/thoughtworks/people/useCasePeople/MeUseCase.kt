@@ -1,5 +1,6 @@
-package com.thoughtworks.people.application.useCasePeople
+package com.thoughtworks.people.useCasePeople
 
+import com.thoughtworks.people.useCasePeople.ports.PersistPerson
 import com.thoughtworks.people.businessPeople.Person
 import java.time.LocalDate
 import java.util.*

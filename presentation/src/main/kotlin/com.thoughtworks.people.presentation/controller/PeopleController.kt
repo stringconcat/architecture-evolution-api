@@ -1,9 +1,9 @@
 package com.thoughtworks.people.presentation.controller
 
-import com.thoughtworks.people.application.useCasePeople.CreateNewPersonUseCase
-import com.thoughtworks.people.application.useCasePeople.GetPersonUseCase
-import com.thoughtworks.people.application.useCasePeople.MeUseCase
-import com.thoughtworks.people.application.useCasePeople.PersonCreationSummary
+import com.thoughtworks.people.useCasePeople.CreateNewPersonUseCase
+import com.thoughtworks.people.useCasePeople.GetPersonUseCase
+import com.thoughtworks.people.useCasePeople.MeUseCase
+import com.thoughtworks.people.useCasePeople.PersonCreationSummary
 import com.thoughtworks.people.presentation.model.PersonRespectfullApiModel
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
