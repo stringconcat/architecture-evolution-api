@@ -47,6 +47,9 @@ kotlinTest = { module = "org.jetbrains.kotlin:kotlin-test" }
 junitParams = { module = "org.junit.jupiter:junit-jupiter-params", version.ref = "junit" }
 kotestCore = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
 
+# Database
+h2Database = { module = "com.h2database:h2", version = "2.3.232" }
+
 # Libraries can be bundled together for easier import
 [bundles]
 kotlinxEcosystem = [

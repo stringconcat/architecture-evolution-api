@@ -1,5 +1,4 @@
 plugins {
-    kotlin("jvm") version "1.9.25"
     kotlin("plugin.spring") version "1.9.25"
     id("org.springframework.boot") version "3.5.3"
     kotlin("plugin.jpa") version "1.9.25"
@@ -16,7 +15,7 @@ dependencies {
 
     implementation(libs.springBootStarterWeb)
     implementation(libs.springBootStarterDataJpa)
-    implementation("com.h2database:h2:2.3.232")
+    runtimeOnly(libs.h2Database)
     testImplementation(libs.bundles.unitTesting)
     testImplementation(libs.springBootStarterTest)
 }

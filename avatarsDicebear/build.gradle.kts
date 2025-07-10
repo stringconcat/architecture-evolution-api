@@ -4,8 +4,7 @@ plugins {
 
 dependencies {
     implementation(project(":businessPeople"))
+    implementation(libs.bundles.kotlinxEcosystem)
     implementation(libs.injectApi)
-    // kotlin
-    implementation("org.jetbrains.kotlin:kotlin-reflect")
     testImplementation(libs.bundles.unitTesting)
 }

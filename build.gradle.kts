@@ -1,5 +1,6 @@
 plugins {
-	kotlin("jvm") version "1.9.25"
+	id("buildsrc.convention.kotlin-jvm")
+	id("java")
 	kotlin("plugin.spring") version "1.9.25" apply false
 	id("org.springframework.boot") version "3.5.3" apply false
 	kotlin("plugin.jpa") version "1.9.25" apply false
@@ -16,6 +17,10 @@ java {
 }
 
 allprojects {
+
+	apply {
+		plugin("buildsrc.convention.kotlin-jvm")
+	}
 
 	repositories {
 		gradlePluginPortal()
@@ -34,12 +39,6 @@ dependencies {
 	testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
-}
-
-kotlin {
-	compilerOptions {
-		freeCompilerArgs.addAll("-Xjsr305=strict")
-	}
 }
 
 tasks.withType<Test> {
