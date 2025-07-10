@@ -1,0 +1,67 @@
+# Version catalog is a central place for you to declare and version dependencies
+# https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog
+# https://docs.gradle.org/current/userguide/platforms.html#sub::toml-dependencies-format
+[versions]
+detekt = "1.23.8"
+jakartaInjectApi = "2.0.1"
+jakartaTransactionApi = "2.0.1"
+junit = "5.13.1"
+kotest = "5.9.1"
+kotlin = "2.1.21"
+kotlinxCoroutines = "1.10.2"
+kotlinxDatetime = "0.6.2"
+kotlinxSerializationJSON = "1.8.1"
+ktlint = "12.3.0"
+springBoot = "3.5.3"
+wiremock = "3.13.1"
+
+[libraries]
+
+# Spring Boot
+springBootStarter = { module = "org.springframework.boot:spring-boot-starter", version.ref = "springBoot" }
+springBootStarterWeb = { module = "org.springframework.boot:spring-boot-starter-web", version.ref = "springBoot" }
+springBootStarterDataJpa = { module = "org.springframework.boot:spring-boot-starter-data-jpa", version.ref = "springBoot" }
+springBootStarterValidation = { module = "org.springframework.boot:spring-boot-starter-validation", version.ref = "springBoot" }
+springBootStarterTest = { module = "org.springframework.boot:spring-boot-starter-test", version.ref = "springBoot" }
+
+# Inject API
+# Other Injection scope avaiavle https://quarkus.io/guides/cdi#bean-scope-available
+injectApi = { module = "jakarta.inject:jakarta.inject-api", version.ref = "jakartaInjectApi" }
+transactionApi = { module = "jakarta.transaction:jakarta.transaction-api", version.ref = "jakartaTransactionApi" }
+
+#Jackson is a library for JSON processing
+jacksonKotlin = { module = "com.fasterxml.jackson.module:jackson-module-kotlin" }
+
+# Kotlin
+kotlinGradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+kotlinReflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
+kotlinxCoroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutines" }
+kotlinxDatetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinxDatetime" }
+kotlinxSerialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJSON" }
+
+# Mocking
+wiremock = { module = "org.wiremock:wiremock", version.ref = "wiremock" }
+
+#Testing
+kotlinTest = { module = "org.jetbrains.kotlin:kotlin-test" }
+junitParams = { module = "org.junit.jupiter:junit-jupiter-params", version.ref = "junit" }
+kotestCore = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
+
+# Libraries can be bundled together for easier import
+[bundles]
+kotlinxEcosystem = [
+    "kotlinReflect",
+    "kotlinxCoroutines",
+    "kotlinxDatetime",
+    "kotlinxSerialization",
+]
+unitTesting = [
+    "junitParams",
+    "kotestCore",
+    "kotlinTest",
+]
+
+[plugins]
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
+kotlinPluginSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint" }

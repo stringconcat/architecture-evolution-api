@@ -1,9 +1,12 @@
+plugins {
+    kotlin("jvm")
+}
 
 dependencies {
     implementation(project(":businessPeople"))
 
     implementation("javax.inject:javax.inject:1")
-    implementation("org.springframework:spring-web")
+    implementation(libs.springBootStarterWeb)
 
 
     // tests

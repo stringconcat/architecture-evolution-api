@@ -1,5 +1,5 @@
 plugins {
-    kotlin("plugin.spring")
+    kotlin("jvm")
 }
 
 dependencies {
@@ -7,7 +7,7 @@ dependencies {
     implementation(project(":useCasePeople"))
 
     // spring modules
-    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation(libs.springBootStarterWeb)
 
     // tools
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
@@ -15,5 +15,5 @@ dependencies {
     // tests
     testImplementation("org.junit.jupiter:junit-jupiter-api")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation(libs.springBootStarterTest)
 }

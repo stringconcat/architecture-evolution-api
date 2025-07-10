@@ -1,6 +1,8 @@
-apply {
-    plugin("org.springframework.boot")
-    plugin("org.jetbrains.kotlin.plugin.spring")
+plugins {
+    kotlin("jvm") version "1.9.25"
+    kotlin("plugin.spring") version "1.9.25"
+    id("org.springframework.boot") version "3.5.3"
+    kotlin("plugin.jpa") version "1.9.25"
 }
 
 
@@ -12,11 +14,12 @@ dependencies {
     implementation(project(":quoteGarden"))
     implementation(project(":avatarsDicebear"))
 
-    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation(libs.springBootStarterWeb)
+    implementation(libs.springBootStarterDataJpa)
     implementation("com.h2database:h2:2.3.232")
 
     // tests
     testImplementation("org.junit.jupiter:junit-jupiter-api")
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation(libs.springBootStarterTest)
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
 }

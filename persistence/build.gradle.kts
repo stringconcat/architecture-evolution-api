@@ -1,13 +1,15 @@
 plugins {
-    id("org.jetbrains.kotlin.plugin.jpa")
+    kotlin("jvm")
+    kotlin("plugin.jpa")
+    kotlin("plugin.spring")
 }
 
 dependencies {
     implementation(project(":businessPeople"))
     implementation(project(":useCasePeople"))
 
-    implementation("javax.persistence:javax.persistence-api")
-    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation(libs.springBootStarterDataJpa)
+    implementation(libs.springBootStarterValidation)
 
     // tests
     testImplementation("org.junit.jupiter:junit-jupiter-api")

@@ -11,8 +11,8 @@ fun interface MeUseCase {
 @Named
 class MeUseCaseImpl(
         private val persistPerson: PersistPerson
-) {
-    operator fun invoke(): Person {
+): MeUseCase {
+    override operator fun invoke(): Person {
         val me = Person(
                 id = UUID.fromString("29f4d7e3-fd7c-4664-ad07-763326215ec4"),
                 firstName = "Sergey",
