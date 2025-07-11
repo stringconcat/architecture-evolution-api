@@ -17,7 +17,7 @@ internal class PersonsServiceTest {
                 secondName = "Bukharov",
                 birthDate = LocalDate.of(1987,12,1),
                 sex = Person.Sex.MAN,
-                avatartUrl = "https://avatars.dicebear.com/v2/male/my-somffething.svg",
+                avatarUrl = "https://avatars.dicebear.com/v2/male/my-somffething.svg",
                 favoriteQuote = "make the easy things easy, and the hard things possible"
         )
         val service = PersonsService(InMemoryRepository())

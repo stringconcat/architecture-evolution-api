@@ -13,19 +13,19 @@ import java.util.*
 data class Person(
     @Id val id: UUID = UUID.randomUUID(),
     @JsonIgnore
-        @NotEmpty
-        val firstName: String,
+    @NotEmpty
+    val firstName: String,
     @JsonIgnore
-        @NotEmpty
-        val secondName: String,
+    @NotEmpty
+    val secondName: String,
     @JsonIgnore
-        val birthDate: LocalDate,
+    val birthDate: LocalDate,
     @JsonProperty("gender")
-        val sex: Sex,
+    val sex: Sex,
     @NotEmpty
-        val avatartUrl: String,
+    val avatarUrl: String,
     @NotEmpty
-        val favoriteQuote: String
+    val favoriteQuote: String
 ) {
     enum class Sex {
         MAN, WOMAN
