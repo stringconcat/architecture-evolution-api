@@ -4,7 +4,7 @@ import java.time.LocalDate
 import java.time.Period
 import java.util.*
 
-const val DEFAULT_ROBOT_AVATAR = "https://avatars.dicebear.com/v2/bottts/not%20found.svg"
+const val DEFAULT_ROBOT_AVATAR = "https://api.dicebear.com/10.x/bottts/svg?seed=not%20found"
 
 data class Person(
         val id: UUID = UUID.randomUUID(),

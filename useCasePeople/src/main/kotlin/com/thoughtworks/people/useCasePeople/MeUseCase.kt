@@ -1,6 +1,7 @@
 package com.thoughtworks.people.useCasePeople
 
 import com.thoughtworks.people.useCasePeople.ports.PersistPerson
+import com.thoughtworks.people.businessPeople.AvatarProvider
 import com.thoughtworks.people.businessPeople.Person
 import jakarta.inject.Named
 import java.time.LocalDate
@@ -11,7 +12,8 @@ fun interface MeUseCase {
 }
 @Named
 class MeUseCaseImpl(
-        private val persistPerson: PersistPerson
+        private val persistPerson: PersistPerson,
+        private val avatarProvider: AvatarProvider
 ): MeUseCase {
     override operator fun invoke(): Person {
         val me = Person(
@@ -20,9 +22,10 @@ class MeUseCaseImpl(
                 secondName = "Bukharov",
                 birthDate = LocalDate.of(1987,12,1),
                 sex = Person.Sex.MAN,
-                avatartUrl = "https://avatars.dicebear.com/v2/male/my-somffething.svg",
                 favoriteQuote = "make the easy things easy, and the hard things possible"
-        )
+        ).also {
+            it.changeAvatar(avatarProvider.createForPerson(it))
+        }
         persistPerson.persist(me)
         return me
     }

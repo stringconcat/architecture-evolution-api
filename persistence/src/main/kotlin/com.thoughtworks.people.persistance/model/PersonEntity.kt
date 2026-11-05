@@ -1,6 +1,7 @@
 package com.thoughtworks.people.persistance.model
 
 import com.thoughtworks.people.businessPeople.Person
+import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.Id
 import java.time.LocalDate
@@ -13,6 +14,7 @@ data class PersonEntity(
     val secondName: String,
     val birthDate: LocalDate,
     val sex: Sex,
+    @Column(length = 1024)
     val avatartUrl: String,
     val favoriteQuote: String
 ) {
