@@ -26,7 +26,7 @@ class PeopleController(
                 secondName = "Bukharov",
                 birthDate = LocalDate.of(1987,12,1),
                 sex = Person.Sex.MAN,
-                avatarUrl = "https://avatars.dicebear.com/v2/male/my-somffething.svg",
+                avatarUrl = GeneratedAvatar(Person.Sex.MAN, "my-somffething").toUrl(),
                 favoriteQuote = "make the easy things easy, and the hard things possible"
         )
         personRepository.save(me)

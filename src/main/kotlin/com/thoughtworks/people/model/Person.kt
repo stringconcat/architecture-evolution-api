@@ -2,6 +2,7 @@ package com.thoughtworks.people.model
 
 import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonProperty
+import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.Id
 import jakarta.validation.constraints.NotEmpty
@@ -23,6 +24,7 @@ data class Person(
     @JsonProperty("gender")
     val sex: Sex,
     @NotEmpty
+    @Column(length = 1024)
     val avatarUrl: String,
     @NotEmpty
     val favoriteQuote: String
